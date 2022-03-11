@@ -1,0 +1,29 @@
+int main() {
+int arr[5];
+    int i=0;
+    while(i<5)
+    {
+        cin>>arr[i];
+       cout<<arr[i]<<endl;
+        i++;
+        }
+}
+
+// double while loop
+
+int main() {
+int arr[5];
+    int i=0;
+    while(i<5)
+    {
+        cin>>arr[i];
+        i++;
+    }
+     i=0;
+     while(i<5)
+     {
+       cout<<arr[i]<<endl;
+         i++;
+        }
+
+}
