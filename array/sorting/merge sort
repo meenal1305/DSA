@@ -1,0 +1,73 @@
+  
+  int merge(int left,int mid,int right, int arr[])
+{
+    int inversion=0;
+    int m=mid+1-left;
+    int n= right-mid;
+    int a[m];
+    int b[n];
+    for(int i=0;i<m;i++) a[i]=arr[left+i];
+    for(int j=0;j<n;j++) b[j]=arr[mid+1+j];
+    int i=0;int j=0;
+        while(i<m && j<n)
+        {
+            if(a[i]<=b[j])
+            {
+                arr[left]=a[i];
+                i++;
+                left++;
+            }
+            else
+            {
+                
+            arr[left] = b[j];
+            j++;
+            left++;
+        inversion=inversion+(m-i);
+            }
+        }
+     while(j < n)
+    {
+        arr[left] = b[j];
+        j++;
+        left++;
+    }
+    
+     while(i < m)
+    {
+        arr[left] = a[i];
+        i++;
+        left++;
+    } 
+    return inversion;
+}
+int divide(int left, int right, int arr[])
+{
+    if(left == right) return 0;
+    
+    int mid = (left + right)/2;
+    int ans=0;
+   ans+= divide(left, mid, arr);
+    ans+= divide(mid+1, right, arr);
+    ans+= merge(left, mid, right, arr);
+    return ans;
+}
+
+
+int Solution::countInversions(vector<int> &A) {
+  
+   int n = A.size();
+
+   int arr[n];
+
+   for(int i = 0;i<n;i++)
+   {
+       arr[i] = A[i];
+   }
+
+  int ans =  divide(0,n-1,arr);
+
+  return ans;
+
+
+}
